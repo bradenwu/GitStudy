@@ -1,0 +1,17 @@
+#更详细描述 : https://gist.github.com/jexchan/2351996
+
+1. ssh-keygen -t rsa -f ~/.ssh/id_rsa_for_github -C "hnhbwzg@gmail.com"
+2. ssh-add ～/.ssh/id_rsa_for_github #默认SSH只会读取id_rsa，所以为了让SSH识别新的私钥，需要将其添加到SSH agent
+3. touch ~/.ssh/config && chmod 600 ~/.ssh/config
+4. 根据git工程代码的地址, 解析出  $User@$HostName:$?/$Project.git
+     如:  
+        #git@github.com:bradenwu/EnvironmentConfig.git
+
+    ## 注意: 这里 Host 是自己起的名字, 在config文件中却别标识用的, 可以随意起
+    Host github.com-bradenwu
+        HostName github.com
+        User git
+        IdentityFile ~/.ssh/id_rsa_for_github
+
+5.  登录github, "Your Profile" ->  Add SSH key
+
